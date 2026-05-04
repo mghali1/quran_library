@@ -900,20 +900,14 @@ class _ExpandableTafsirTextState extends State<_ExpandableTafsirText> {
     final strippedLen = _stripped.length;
 
     if (_expanded) {
-      // Test: use plain Text with stripped content instead of Text.rich
-      final fullText = spans.fold<String>('', (sum, s) {
-        if (s is TextSpan) return sum + (s.text ?? '');
-        return sum;
-      });
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            fullText,
-            style: textStyle,
+          Text.rich(
+            TextSpan(children: _getFullSpans(), style: textStyle),
             textDirection: widget.textDirection,
             textAlign: TextAlign.justify,
+            overflow: TextOverflow.visible,
           ),
           _buildToggleButton(widget.readLessText, buttonStyle, buttonColor,
               Icons.keyboard_arrow_up),
