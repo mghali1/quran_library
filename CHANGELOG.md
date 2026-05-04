@@ -3,12 +3,12 @@
 * **ADD:**
   * GitLab fallback URLs for all remote data sources (word info, tajweed, tafsir, and translations) — automatically tries GitLab when GitHub is blocked or unavailable.
   * `customBookmarksColor` parameter — accepts `Color? Function(AyahModel)` for per-ayah bookmark color customization, available in `QuranLibraryScreen` and all display modes.
-  * Minimum auto-scroll speed reduced to 0.05 (was 0.1).
 
 * **FIX:**
   * `_ExpandableTafsirText` now explicitly sets `overflow: TextOverflow.visible` to prevent inherited `TextOverflow.ellipsis` from app themes causing truncated text in expanded mode.
 
 * **CHANGED:**
+  * Minimum auto-scroll speed reduced to 0.05 (was 0.1).
   * `SuraJsonFilesService` now supports optional `webBaseUrlGitLab` with automatic fallback on web.
   * `downloadFile` in tafsir download extension now accepts `fallbackUrl` and retries on GitLab if GitHub fails.
   * Web JSON loading tries GitHub first, then falls back to GitLab raw URLs.
