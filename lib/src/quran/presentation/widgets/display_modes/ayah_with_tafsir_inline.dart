@@ -900,18 +900,16 @@ class _ExpandableTafsirTextState extends State<_ExpandableTafsirText> {
     final strippedLen = _stripped.length;
 
     if (_expanded) {
-      log('ExpandableTafsir: expanded=true, '
-          'strippedLen=$strippedLen, spansTextLen=$spansTextLength, '
-          'spansCount=${spans.length}, '
-          'rawTextLen=${widget.rawText.length}',
-          name: 'ExpandableTafsir');
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text.rich(
             TextSpan(children: spans, style: textStyle),
             textDirection: widget.textDirection,
             textAlign: TextAlign.justify,
+            softWrap: true,
+            overflow: TextOverflow.clip,
           ),
           _buildToggleButton(widget.readLessText, buttonStyle, buttonColor,
               Icons.keyboard_arrow_up),
