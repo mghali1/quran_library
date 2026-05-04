@@ -893,12 +893,23 @@ class _ExpandableTafsirTextState extends State<_ExpandableTafsirText> {
       height: 1.5,
     );
 
+    final spans = _getFullSpans();
+    final spansTextLength = spans
+        .whereType<TextSpan>()
+        .fold<int>(0, (sum, s) => sum + (s.text?.length ?? 0));
+    final strippedLen = _stripped.length;
+
     if (_expanded) {
+      log('ExpandableTafsir: expanded=true, '
+          'strippedLen=$strippedLen, spansTextLen=$spansTextLength, '
+          'spansCount=${spans.length}, '
+          'rawTextLen=${widget.rawText.length}',
+          name: 'ExpandableTafsir');
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text.rich(
-            TextSpan(children: _getFullSpans(), style: textStyle),
+            TextSpan(children: spans, style: textStyle),
             textDirection: widget.textDirection,
             textAlign: TextAlign.justify,
           ),

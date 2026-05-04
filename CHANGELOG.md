@@ -1,3 +1,13 @@
+## 4.0.3
+
+* **ADD:**
+  * GitLab fallback URLs for all remote data sources (word info, tajweed, tafsir, and translations) — automatically tries GitLab when GitHub is blocked or unavailable.
+
+* **CHANGED:**
+  * `SuraJsonFilesService` now supports optional `webBaseUrlGitLab` with automatic fallback on web.
+  * `downloadFile` in tafsir download extension now accepts `fallbackUrl` and retries on GitLab if GitHub fails.
+  * Web JSON loading tries GitHub first, then falls back to GitLab raw URLs.
+
 ## 4.0.2
 
 * **FIX:**
