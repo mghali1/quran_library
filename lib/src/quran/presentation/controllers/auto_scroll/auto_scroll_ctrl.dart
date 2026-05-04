@@ -118,7 +118,7 @@ class AutoScrollCtrl extends GetxController with GetTickerProviderStateMixin {
 
   /// تحديث السرعة من الـ Slider (أثناء السكرول)
   void updateSpeed(double newSpeed) {
-    state.speed.value = newSpeed.clamp(0.1, 5.0);
+    state.speed.value = newSpeed.clamp(0.05, 5.0);
     _saveSettings();
   }
 
@@ -242,7 +242,7 @@ class AutoScrollCtrl extends GetxController with GetTickerProviderStateMixin {
 
   void _loadSettings() {
     state.speed.value =
-        (_storage.read<double>(_keys.autoScrollSpeed) ?? 1.5).clamp(0.1, 5.0);
+        (_storage.read<double>(_keys.autoScrollSpeed) ?? 1.5).clamp(0.05, 5.0);
     state.stopCondition.value = AutoScrollStopConditionX.fromStorageIndex(
         _storage.read<int>(_keys.autoScrollStopCondition) ?? 3);
     state.targetPageCount.value =
