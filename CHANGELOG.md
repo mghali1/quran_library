@@ -1,3 +1,8 @@
+## 4.0.3+1
+
+* **CHANGED:**
+  * Updated SDK constraint to `>=3.3.0 <4.0.0` and Flutter to `>=3.16.0` for better pub.dev compatibility.
+
 ## 4.0.3
 
 * **ADD:**
