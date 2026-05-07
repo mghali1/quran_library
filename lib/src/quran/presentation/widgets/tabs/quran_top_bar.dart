@@ -80,7 +80,8 @@ class _QuranTopBar extends StatelessWidget {
                   _showMenuBottomSheet(context, defaults);
                 },
               ),
-            if ((defaults.showMenuButton ?? true) &&
+            if ((defaults.showTajweedButton ?? true) &&
+                (defaults.showMenuButton ?? true) &&
                 (QuranCtrl.instance.state.fontsSelected.value == 0))
               IconButton(
                 icon: SvgPicture.asset(
@@ -147,13 +148,12 @@ class _QuranTopBar extends StatelessWidget {
                   }),
                 if (defaults.showAudioButton ?? true)
                   IconButton(
-                    icon: SvgPicture.asset(
-                        defaults.audioIconPath ?? AssetsPath.assets.surahsAudio,
-                        height: defaults.iconSize,
-                        colorFilter: ColorFilter.mode(
-                            defaults.iconColor ??
-                                Theme.of(context).colorScheme.primary,
-                            BlendMode.srcIn)),
+                    icon: Icon(
+                      Icons.headset_rounded,
+                      size: defaults.iconSize ?? 24,
+                      color: defaults.iconColor ??
+                          Theme.of(context).colorScheme.primary,
+                    ),
                     onPressed: () async {
                       await AudioCtrl.instance.state.audioPlayer.stop();
                       QuranCtrl.instance.state.isShowMenu.value = false;
