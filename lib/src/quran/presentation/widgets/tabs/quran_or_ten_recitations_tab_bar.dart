@@ -72,8 +72,8 @@ class QuranOrTenRecitationsTabBar extends StatelessWidget {
               indicatorPadding: const EdgeInsets.all(4),
               labelStyle: defaults.tabLabelStyle,
               tabs: [
-                Tab(text: defaults.quranTabText),
-                Tab(text: defaults.tenRecitationsTabText),
+                Tab(text: defaults.quranTabText ?? 'القرآن الكريم'),
+                Tab(text: defaults.tenRecitationsTabText ?? 'القراءات العشر'),
               ],
             ),
           )
