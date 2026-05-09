@@ -34,24 +34,28 @@ class _QuranTopBar extends StatelessWidget {
 
     return Align(
       alignment: Alignment.topCenter,
-      child: Container(
-        height: defaults.height ?? 55,
-        padding:
-            defaults.padding ?? const EdgeInsets.symmetric(horizontal: 8.0),
-        decoration: BoxDecoration(
-          color: bgColor,
-          borderRadius: BorderRadius.circular(defaults.borderRadius ?? 12),
-          boxShadow: [
-            BoxShadow(
-              color:
-                  (defaults.shadowColor ?? Colors.black.withValues(alpha: .2)),
-              spreadRadius: 1,
-              blurRadius: 5,
-              offset: const Offset(0, 5), // changes position of shadow
-            ),
-          ],
-        ),
-        child: Row(
+      // Prevent tap events from passing through to underlying page (fixes iPad modal closing issue)
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {}, // Absorb taps
+        child: Container(
+          height: defaults.height ?? 55,
+          padding:
+              defaults.padding ?? const EdgeInsets.symmetric(horizontal: 8.0),
+          decoration: BoxDecoration(
+            color: bgColor,
+            borderRadius: BorderRadius.circular(defaults.borderRadius ?? 12),
+            boxShadow: [
+              BoxShadow(
+                color:
+                    (defaults.shadowColor ?? Colors.black.withValues(alpha: .2)),
+                spreadRadius: 1,
+                blurRadius: 5,
+                offset: const Offset(0, 5), // changes position of shadow
+              ),
+            ],
+          ),
+          child: Row(
           children: [
             if (defaults.showBackButton ?? false)
               IconButton(
@@ -186,6 +190,7 @@ class _QuranTopBar extends StatelessWidget {
               ],
             )
           ],
+        ),
         ),
       ),
     );
